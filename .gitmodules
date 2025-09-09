@@ -1,7 +1,7 @@
 [submodule "ext/SDL"]
 	path = ext/SDL
-	url = https://github.com/libsdl-org/SDL
-    branch = main
+	url = https://github.com/adamwych/SDL
+	branch = pex
 [submodule "ext/SDL_image"]
 	path = ext/SDL_image
 	url = https://github.com/libsdl-org/SDL_image

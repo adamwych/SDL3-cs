@@ -33,7 +33,7 @@
     <Content Include="$(NativeLibraryFilePath)"
              PackagePath="runtimes\$(RuntimeIdentifier)\native\"
              Condition="Exists('$(NativeLibraryFilePath)')">
-      <Link>%(Filename)%(Extension)</Link>
+      <Link>runtimes\$(RuntimeIdentifier)\native\%(Filename)%(Extension)</Link>
       <Pack>true</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

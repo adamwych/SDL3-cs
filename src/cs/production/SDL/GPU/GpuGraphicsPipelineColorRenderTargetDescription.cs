@@ -9,7 +9,7 @@ namespace bottlenoselabs.SDL;
 ///     Parameters for creating a <see cref="GpuGraphicsPipeline" /> that describe how a color render-target is used.
 /// </summary>
 [PublicAPI]
-public sealed class GpuGraphicsPipelineColorRenderTargetDescription
+public sealed record GpuGraphicsPipelineColorRenderTargetDescription
 {
     /// <summary>
     ///     Gets or sets the texture format of the color render-target.

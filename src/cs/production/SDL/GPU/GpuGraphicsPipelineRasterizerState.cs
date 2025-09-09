@@ -18,7 +18,7 @@ namespace bottlenoselabs.SDL;
 ///     </para>
 /// </remarks>
 [PublicAPI]
-public sealed class GpuGraphicsPipelineRasterizerState
+public sealed record GpuGraphicsPipelineRasterizerState
 {
     /// <summary>
     ///     Gets or sets the way primitives of type

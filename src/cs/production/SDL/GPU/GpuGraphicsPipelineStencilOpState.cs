@@ -9,7 +9,7 @@ namespace bottlenoselabs.SDL;
 ///     Defines the stencil operation state of the graphics pipeline.
 /// </summary>
 [PublicAPI]
-public sealed class GpuGraphicsPipelineStencilOpState
+public sealed record GpuGraphicsPipelineStencilOpState
 {
     /// <summary>
     ///     Gets or sets the operation performed on samples that fail the stencil-test.

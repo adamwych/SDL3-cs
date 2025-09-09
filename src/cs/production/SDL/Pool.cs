@@ -70,7 +70,7 @@ public partial class Pool<T> : Disposable
         Func<T> createFunc,
         string? name,
         int initialCapacity = 0,
-        bool isEnabledTrackLeaks = true)
+        bool isEnabledTrackLeaks = false)
     {
         ArgumentNullException.ThrowIfNull(logger);
         ArgumentOutOfRangeException.ThrowIfLessThan(initialCapacity, 0);

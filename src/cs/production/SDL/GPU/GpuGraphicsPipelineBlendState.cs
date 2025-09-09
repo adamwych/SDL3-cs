@@ -9,7 +9,7 @@ namespace bottlenoselabs.SDL;
 ///     Parameters for creating a <see cref="GpuGraphicsPipeline" /> that describe a color render-target's blend state.
 /// </summary>
 [PublicAPI]
-public sealed class GpuGraphicsPipelineBlendState
+public sealed record GpuGraphicsPipelineBlendState
 {
     /// <summary>
     ///     Gets or sets the value to be multiplied by the source RGB value.

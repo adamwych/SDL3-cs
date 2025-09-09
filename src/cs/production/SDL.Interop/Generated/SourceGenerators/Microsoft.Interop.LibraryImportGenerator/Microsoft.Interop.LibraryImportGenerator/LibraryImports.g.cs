@@ -643,6 +643,14 @@ namespace bottlenoselabs.Interop
 {
     public static unsafe partial class SDL
     {
+        [global::System.Runtime.InteropServices.DllImportAttribute("SDL3", EntryPoint = "SDL_CreateGPUMetalArgumentBuffer", ExactSpelling = true)]
+        public static extern partial global::bottlenoselabs.Interop.SDL.SDL_GPUMetalArgumentBuffer* SDL_CreateGPUMetalArgumentBuffer(global::bottlenoselabs.Interop.SDL.SDL_GPUDevice* device, global::bottlenoselabs.Interop.SDL.SDL_GPUShader* shader);
+    }
+}
+namespace bottlenoselabs.Interop
+{
+    public static unsafe partial class SDL
+    {
         [global::System.Runtime.InteropServices.DllImportAttribute("SDL3", EntryPoint = "SDL_CreateGPURenderer", ExactSpelling = true)]
         public static extern partial global::bottlenoselabs.Interop.SDL.SDL_Renderer* SDL_CreateGPURenderer(global::bottlenoselabs.Interop.SDL.SDL_Window* window, global::bottlenoselabs.Interop.SDL.SDL_GPUShaderFormat format_flags, global::bottlenoselabs.Interop.SDL.SDL_GPUDevice** device);
     }
@@ -2245,6 +2253,14 @@ namespace bottlenoselabs.Interop
     {
         [global::System.Runtime.InteropServices.DllImportAttribute("SDL3", EntryPoint = "SDL_GetGPUDriver", ExactSpelling = true)]
         public static extern partial global::Interop.Runtime.CString SDL_GetGPUDriver(int index);
+    }
+}
+namespace bottlenoselabs.Interop
+{
+    public static unsafe partial class SDL
+    {
+        [global::System.Runtime.InteropServices.DllImportAttribute("SDL3", EntryPoint = "SDL_GetGPUMetalArgumentBufferAsGPUBuffer", ExactSpelling = true)]
+        public static extern partial global::bottlenoselabs.Interop.SDL.SDL_GPUBuffer* SDL_GetGPUMetalArgumentBufferAsGPUBuffer(global::bottlenoselabs.Interop.SDL.SDL_GPUMetalArgumentBuffer* argumentBuffer);
     }
 }
 namespace bottlenoselabs.Interop
@@ -4147,6 +4163,14 @@ namespace bottlenoselabs.Interop
 {
     public static unsafe partial class SDL
     {
+        [global::System.Runtime.InteropServices.DllImportAttribute("SDL3", EntryPoint = "SDL_GPUMetalRenderEncoderUseResource", ExactSpelling = true)]
+        public static extern partial void SDL_GPUMetalRenderEncoderUseResource(global::bottlenoselabs.Interop.SDL.SDL_GPUCommandBuffer* commandBuffer, global::bottlenoselabs.Interop.SDL.SDL_GPUTexture* texture);
+    }
+}
+namespace bottlenoselabs.Interop
+{
+    public static unsafe partial class SDL
+    {
         [global::System.Runtime.InteropServices.DllImportAttribute("SDL3", EntryPoint = "SDL_GPUSupportsProperties", ExactSpelling = true)]
         public static extern partial global::Interop.Runtime.CBool SDL_GPUSupportsProperties(global::bottlenoselabs.Interop.SDL.SDL_PropertiesID props);
     }
@@ -5547,6 +5571,14 @@ namespace bottlenoselabs.Interop
 {
     public static unsafe partial class SDL
     {
+        [global::System.Runtime.InteropServices.DllImportAttribute("SDL3", EntryPoint = "SDL_ReleaseGPUMetalArgumentBuffer", ExactSpelling = true)]
+        public static extern partial void SDL_ReleaseGPUMetalArgumentBuffer(global::bottlenoselabs.Interop.SDL.SDL_GPUDevice* device, global::bottlenoselabs.Interop.SDL.SDL_GPUMetalArgumentBuffer* argumentBuffer);
+    }
+}
+namespace bottlenoselabs.Interop
+{
+    public static unsafe partial class SDL
+    {
         [global::System.Runtime.InteropServices.DllImportAttribute("SDL3", EntryPoint = "SDL_ReleaseGPUSampler", ExactSpelling = true)]
         public static extern partial void SDL_ReleaseGPUSampler(global::bottlenoselabs.Interop.SDL.SDL_GPUDevice* device, global::bottlenoselabs.Interop.SDL.SDL_GPUSampler* sampler);
     }
@@ -6245,6 +6277,14 @@ namespace bottlenoselabs.Interop
     {
         [global::System.Runtime.InteropServices.DllImportAttribute("SDL3", EntryPoint = "SDL_SetGPUBufferName", ExactSpelling = true)]
         public static extern partial void SDL_SetGPUBufferName(global::bottlenoselabs.Interop.SDL.SDL_GPUDevice* device, global::bottlenoselabs.Interop.SDL.SDL_GPUBuffer* buffer, global::Interop.Runtime.CString text);
+    }
+}
+namespace bottlenoselabs.Interop
+{
+    public static unsafe partial class SDL
+    {
+        [global::System.Runtime.InteropServices.DllImportAttribute("SDL3", EntryPoint = "SDL_SetGPUMetalArgumentBufferTexture", ExactSpelling = true)]
+        public static extern partial void SDL_SetGPUMetalArgumentBufferTexture(global::bottlenoselabs.Interop.SDL.SDL_GPUMetalArgumentBuffer* argumentBuffer, global::bottlenoselabs.Interop.SDL.SDL_GPUTexture* texture, int index);
     }
 }
 namespace bottlenoselabs.Interop

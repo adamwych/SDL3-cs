@@ -59,9 +59,9 @@ public class GpuGraphicsPipelineOptions : BaseOptions
     public bool IsEnabledDepthStencilRenderTarget { get; set; }
 
     /// <summary>
-    ///     Gets the span of color render-target descriptions.
+    ///     Gets or sets the span of color render-target descriptions.
     /// </summary>
-    public ImmutableArray<GpuGraphicsPipelineColorRenderTargetDescription> ColorRenderTargets { get; private set; } = [];
+    public ImmutableArray<GpuGraphicsPipelineColorRenderTargetDescription> ColorRenderTargets { get; set; } = [];
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="GpuGraphicsPipelineOptions" /> class.

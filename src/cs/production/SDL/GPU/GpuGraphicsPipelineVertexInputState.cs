@@ -16,7 +16,7 @@ namespace bottlenoselabs.SDL;
 ///     </para>
 /// </remarks>
 [PublicAPI]
-public struct GpuGraphicsPipelineVertexInputState
+public record struct GpuGraphicsPipelineVertexInputState
 {
     /// <summary>
     ///     The vertex buffer descriptions array pointer.

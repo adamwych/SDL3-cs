@@ -30,7 +30,7 @@ namespace bottlenoselabs.SDL;
 ///     </para>
 /// </remarks>
 [PublicAPI]
-public sealed class GpuGraphicsPipelineDepthStencilState
+public sealed record GpuGraphicsPipelineDepthStencilState
 {
     /// <summary>
     ///     Gets or sets the boolean comparison operator used for depth testing.

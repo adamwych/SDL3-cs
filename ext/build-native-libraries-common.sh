@@ -127,9 +127,9 @@ function build_library_cmake() {
     local LIB_DIRECTORY_BUILD
     LIB_DIRECTORY_BUILD="$DIRECTORY_CONTAINER_BUILDS/$LIB_NAME-$RID-$BUILD_TYPE"
 
-    if [ -d "$LIB_DIRECTORY_BUILD" ]; then
-        rm -r "$LIB_DIRECTORY_BUILD"
-    fi
+    #if [ -d "$LIB_DIRECTORY_BUILD" ]; then
+    #    rm -r "$LIB_DIRECTORY_BUILD"
+    #fi
 
     mkdir -p "$LIB_DIRECTORY_BUILD"
 

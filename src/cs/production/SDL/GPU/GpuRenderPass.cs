@@ -17,8 +17,11 @@ namespace bottlenoselabs.SDL;
 [PublicAPI]
 public sealed unsafe class GpuRenderPass : Poolable<GpuRenderPass>
 {
+    /// <summary>
+    ///     Gets the handle.
+    /// </summary>
 #pragma warning disable SA1401
-    internal SDL_GPURenderPass* Handle;
+    public SDL_GPURenderPass* Handle { get; internal set; }
 #pragma warning restore SA1401
 
     private bool _isPipelineBound;
@@ -65,6 +68,38 @@ public sealed unsafe class GpuRenderPass : Poolable<GpuRenderPass>
         bufferBinding.buffer = (SDL_GPUBuffer*)vertexBuffer.Handle;
         bufferBinding.offset = (uint)offset;
         SDL_BindGPUVertexBuffers(Handle, 0, &bufferBinding, 1);
+    }
+
+    /// <summary>
+    ///     Binds storage buffers for use on the vertex shader.
+    /// </summary>
+    /// <param name="startIndex">The vertex storage buffer slot to begin binding from.</param>
+    /// <param name="buffers">An array of buffers to bind.</param>
+    public void BindVertexStorageBuffers(int startIndex, params ReadOnlySpan<GpuDataBuffer> buffers)
+    {
+        var bindings = stackalloc SDL_GPUBuffer*[buffers.Length];
+        for (var i = 0; i < buffers.Length; i++)
+        {
+            bindings[i] = (SDL_GPUBuffer*)buffers[i].Handle;
+        }
+
+        SDL_BindGPUVertexStorageBuffers(Handle, (uint)startIndex, bindings, (uint)buffers.Length);
+    }
+
+    /// <summary>
+    ///     Binds storage buffers for use on the fragment shader.
+    /// </summary>
+    /// <param name="startIndex">The fragment storage buffer slot to begin binding from.</param>
+    /// <param name="buffers">An array of buffers to bind.</param>
+    public void BindFragmentStorageBuffers(int startIndex, params ReadOnlySpan<GpuDataBuffer> buffers)
+    {
+        var bindings = stackalloc SDL_GPUBuffer*[buffers.Length];
+        for (var i = 0; i < buffers.Length; i++)
+        {
+            bindings[i] = (SDL_GPUBuffer*)buffers[i].Handle;
+        }
+
+        SDL_BindGPUFragmentStorageBuffers(Handle, (uint)startIndex, bindings, (uint)buffers.Length);
     }
 
     /// <summary>
@@ -212,7 +247,49 @@ public sealed unsafe class GpuRenderPass : Poolable<GpuRenderPass>
     }
 
     /// <summary>
-    ///     Ends the render pass.
+    ///     Draws.
+    /// </summary>
+    /// <param name="buffer">The number of indices to draw per instance.</param>
+    /// <param name="offset">The number of instances to draw.</param>
+    /// <param name="drawCount">The starting index within the index buffer.</param>
+    /// <exception cref="InvalidOperationException">No graphics pipeline is bound.</exception>
+    public void DrawPrimitivesIndirect(GpuDataBuffer buffer, int offset, int drawCount)
+    {
+        if (!_isPipelineBound)
+        {
+            throw new InvalidOperationException("A graphics pipeline must be bound before drawing primitives.");
+        }
+
+        SDL_DrawGPUPrimitivesIndirect(
+            Handle,
+            buffer.HandleTyped,
+            (uint)offset,
+            (uint)drawCount);
+    }
+
+    /// <summary>
+    ///     Draws.
+    /// </summary>
+    /// <param name="buffer">A buffer containing draw parameters.</param>
+    /// <param name="offset">The offset to start reading from the draw buffer.</param>
+    /// <param name="drawCount">The number of draw parameter sets that should be read from the draw buffer.</param>
+    /// <exception cref="InvalidOperationException">No graphics pipeline is bound.</exception>
+    public void DrawPrimitivesIndexedIndirect(GpuDataBuffer buffer, int offset, int drawCount)
+    {
+        if (!_isPipelineBound)
+        {
+            throw new InvalidOperationException("A graphics pipeline must be bound before drawing primitives.");
+        }
+
+        SDL_DrawGPUIndexedPrimitivesIndirect(
+            Handle,
+            buffer.HandleTyped,
+            (uint)offset,
+            (uint)drawCount);
+    }
+
+    /// <summary>
+    ///     Ends a render pass.
     /// </summary>
     /// <exception cref="InvalidOperationException">The associated command buffer was submitted.</exception>
     public void End()
